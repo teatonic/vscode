@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  vscode:
+    image: codercom/code-server:latest
+    container_name: vscode
+    volumes:
+      - ./.config:/home/coder/.config
+      - ${REPOS}:/workspace
+    ports:
+      - 8180:8080
+    user: 1000:1000 
+    environment:
+      - DOCKER_USER=1000
+    restart: unless-stopped
+
