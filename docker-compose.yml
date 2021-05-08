@@ -4,12 +4,14 @@ services:
     image: codercom/code-server:latest
     container_name: vscode
     volumes:
-      - ./.config:/home/coder/.config
+      - ./code-server/:/root/.config/code-server
+      #- ./.config:/home/coder/.config
+      #- ./.extensions:/home/coder/.local/share/code-server/extensions
       - ${REPOS}:/workspace
     ports:
       - 8180:8080
-    user: 1000:1000 
+    user: 0:0 
     environment:
-      - DOCKER_USER=1000
+      - DOCKER_USER=0
     restart: unless-stopped
 
