@@ -5,13 +5,14 @@ services:
     container_name: vscode
     volumes:
       - ./code-server/:/root/.config/code-server
+      - ./extensions:/root/.local/share/code-server/extensions
       #- ./.config:/home/coder/.config
       #- ./.extensions:/home/coder/.local/share/code-server/extensions
       - ${REPOS}:/workspace
     ports:
       - 8180:8080
     user: 0:0 
-    environment:
-      - DOCKER_USER=0
+    #environment:
+    #  - DOCKER_USER=0
     restart: unless-stopped
 
